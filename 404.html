@@ -1,0 +1,975 @@
+<!DOCTYPE HTML PUBLIC (()) PUBLIC HTML>
+<TITLE>PÁGINA DE GESTIÓN DE ERRORES</TITLE>
+<style>
+/***** GENERALES. RESETEO PARA NAVEGADORES *****/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
+margin:0px;
+padding:0px;
+}
+
+table {
+border-collapse:collapse;
+border-spacing:0;
+}
+
+fieldset,img {
+border:0;
+}
+
+address,caption,cite,code,dfn,em,strong,th,var {
+font-style:normal;
+font-weight:normal;
+}
+
+ol,ul {
+list-style:none;
+}
+
+caption,th {
+text-align:left;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-size:100%;
+	font-weight:normal;
+}
+
+q:before,q:after {
+content:'';
+}
+
+abbr,acronym {
+	border:0;
+}
+/***** FIN GENERALES. RESETEO PARA NAVEGADORES *****/
+
+
+body {
+	font: 100% Verdana, Arial, Helvetica, sans-serif;
+	background: #e5e5e5;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	color: #000000;
+	background-image:url(../imagenes/bg_body.jpg);
+	background-repeat:repeat-x;
+	background-position:left top;
+}
+.ocultar
+ {
+	display:none
+}
+
+#container {
+	/*width: 46em;*/
+	width: 970px;
+	margin: 0 auto; /* los márgenes automáticos (conjuntamente con un ancho) centran la página */
+	text-align: left; /* esto anula text-align: center en el elemento body. */
+	background-image:url(../imagenes/bg_rayuela.png);
+	background-repeat:no-repeat;
+	height:453px;
+	margin-top:105px
+}
+
+#mainContent {
+	padding: 0 145px; /* recuerde que el relleno es el espacio situado dentro del cuadro div y que el margen es el espacio situado fuera del cuadro div */
+}
+
+#logoRayuela {
+	padding-top:20px;
+	text-align:center;
+	height: 95px;
+	position: relative;
+}
+
+#enlacesSuperior {
+	text-align:right;
+	font-size: 70%;
+	margin-left: 35%;
+	padding-right: 26px;
+	padding-bottom: 7px;
+	display-align: center;
+	display: flex;
+    align-items: center;
+
+}
+
+#enlacesSuperior a {
+	color: #5d5a5a;
+	padding-right:5px;
+	padding-left:5px;
+	text-decoration:none;
+}
+
+#enlacesSuperior span
+{
+	float: right;
+}
+
+#enlacesSuperior img
+{
+	width: 85px;
+}
+
+#enlacesSuperior a:hover {
+	text-decoration:underline
+}
+
+#formLog {
+	padding-top:20px;
+	padding-left:30px
+}
+
+#formLog label, .mensaje {
+	font-family:Verdana, Geneva, sans-serif;
+	color:#FFF;
+	font-weight:bold;
+	font-size:70%;
+	text-transform:uppercase
+}
+
+div.mensajeError{
+	color: #EF9C86;
+	text-transform: none;
+}
+
+#formLog input {
+	background-image:url(../imagenes/bg_input.gif);
+	background-repeat:repeat-x;
+	height:21px;
+	border:0px;
+	padding-left:4px
+}
+
+#formLog input.boton, button.error{
+	background-image:url(../imagenes/bg_boton.gif);
+	background-repeat:no-repeat;
+	margin-top:13px;
+	border:0px;
+	height:25px;
+	color:#FFF;
+	font-family:Verdana, Geneva, sans-serif;
+	padding-left:9px;
+	padding-right:9px;
+	width:69px;
+	float:left;
+	cursor:pointer;
+}
+button.error
+{
+	float:none;
+}
+
+#formLog img{
+	padding-left:59px
+}
+
+.columna
+{
+	width: 25%;
+	float:left;
+	padding-left:10px
+}
+
+#enlacesInferior {
+	font-size:55%;
+	float:left;
+	margin-top:32px;
+	width:530px
+}
+
+#enlacesInferior a, .botonComoEnlace {
+	color: #5d5a5a;
+	padding-right:5px;
+	padding-left:5px;
+	text-decoration:none;
+	border-right:1px dotted #5d5a5a
+}
+
+.botonComoEnlace {
+    background: none repeat scroll 0 0 transparent;
+    border: medium none;
+    cursor: pointer;
+    font: 100% Verdana,Arial,Helvetica,sans-serif;
+    border-right: 1px dotted #5D5A5A;
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
+    margin: -2px !important;
+    padding: 0 2px 0 4px;
+    width:90px;
+}
+
+.botonComoEnlace:hover
+{
+	text-decoration: underline;
+}
+
+#enlacesInferior a:hover {
+	color: #5d5a5a;
+	text-decoration:underline
+}
+
+#enlaceNovedades {
+	float:left;
+	margin-top:32px;
+	margin-top:29px;
+}
+
+#enlaceNovedades a {
+	color: #ffffff;
+	font-size:60%;
+	margin-left:38px;
+	font-weight:bold;
+	border-right:0px;
+	text-decoration:none
+}
+
+#enlaceNovedades a:hover {
+	text-decoration:underline
+}
+
+#logoExtremadura {
+	float:left;
+	width:45%;
+	padding-left:10px;
+	margin-top:18px
+}
+#logoUE {
+	margin-top:35px
+}
+
+#logoFEDER{
+	clear: both;
+	position: relative;
+	left: 347px;
+}
+
+#logoFEDER p {
+    display: inline-block;
+    position: relative;
+	top: -16px;
+	color:#373737;
+	font-family: arial;
+	font-size: 70%;
+	white-space: nowrap;
+}
+#logoFEDER img {
+    height: 65px;
+}
+
+/* MODULOS*/
+
+#containerModulos {
+	/*width: 46em;*/
+	width: 970px;
+	margin: 0 auto; /* los márgenes automáticos (conjuntamente con un ancho) centran la página */
+	text-align: left; /* esto anula text-align: center en el elemento body. */
+	background-image:url(../imagenes/bg_rayuela_modulos.png);
+	background-repeat:no-repeat;
+	height:453px;
+	margin-top:105px
+}
+
+#modulos {
+	padding-top:25px;
+	padding-bottom:18px;
+	text-align:center;
+	width:660px
+
+}
+
+#textoInferior {
+	font-size:55%;
+	float:left;
+	margin-top:0px;
+	padding-left:12px;
+}
+
+/* PERFIL */
+
+#formPerfil {
+	padding-top:40px;
+	padding-left:30px;
+	width:430px;
+	float:left;
+	margin-bottom:70px
+}
+
+#formPerfil label {
+	font-family:Verdana, Geneva, sans-serif;
+	color:#FFF;
+	font-weight:bold;
+	font-size:70%;
+	margin-right:6px;
+	text-transform:uppercase
+}
+
+#formPerfil select {
+	background-image:url(../imagenes/bg_input.gif);
+	background-repeat:repeat-x;
+	height:21px;
+	border:0px;
+	padding-left:4px;
+	vertical-align:middle;
+	margin-top:-4px
+}
+
+#formPerfil input.boton{
+	background-image:url(../imagenes/bg_boton.gif);
+	background-repeat:no-repeat;
+	margin-top:13px;
+	border:0px;
+	height:25px;
+	color:#FFF;
+	font-family:Verdana, Geneva, sans-serif;
+	padding-left:9px;
+	padding-right:9px;
+	width:69px;
+	float:none
+}
+
+#formPerfil img{
+	padding-left:59px
+}
+
+#perfilSelec {
+	width:186px;
+	float:left
+}
+
+#perfilSelec img {
+	padding-left: 35px;
+	padding-top:25px
+}
+
+/* SIMULACION */
+
+
+
+#containerSimula {
+	width: 970px;
+    margin: 0 auto; /* los márgenes automáticos (conjuntamente con un ancho) centran la página */
+    text-align: left; /* esto anula text-align: center en el elemento body. */
+    background-image:url(../imagenes/bg_simulacion.png);
+    background-repeat:no-repeat;
+    height:580px;
+    margin-top:5px
+}
+
+#titModulo {
+    margin: 11px auto 0 -105px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+    padding-top: 3px;
+    text-align: left;
+    width: 100%;
+    font-size: 90%;
+    font-weight: bold;
+}
+
+#formSimula {
+	/*
+	padding-top:20px;
+	padding-left:30px;
+	margin-left:-130px;
+	height: 260px;
+	margin-right:-110px;
+	*/
+
+	width: 800px;
+    height: 290px;
+    margin-left: -50px;
+}
+
+#formSimula label, .txtblanco {
+	font-family:Verdana, Geneva, sans-serif;
+	color:#FFF;
+	font-size:70%;
+	/*width:15%;*/
+	/*float:left*/
+}
+
+#formSimula label.sinancho {
+	width:auto;
+	float:none;
+	vertical-align:top
+}
+
+#formSimula p {
+	font-family:Verdana, Geneva, sans-serif;
+	color:#FFF;
+	font-size:70%;
+	margin-right:7px;
+	float:left;
+	font-weight:bold
+}
+
+#formSimula input {
+	background-image:url(../imagenes/bg_input.gif);
+	background-repeat:repeat-x;
+	height:21px;
+	border:0px;
+	padding-left:4px
+	/*width:75%;*/
+	/*margin-bottom:8px;
+	margin-top:-6px*/
+
+}
+
+#formSimula input.radio {
+	width:auto;
+	background-image:none;
+	margin-bottom:0px
+
+}
+
+#formSimula select {
+	background-image:url(../imagenes/bg_input.gif);
+	background-repeat:repeat-x;
+	height:21px;
+	border:0px;
+	padding-left:4px;
+	/*width:80%;*/
+	margin-bottom:9px
+}
+
+#formSimula input.boton{
+	background-image:url(../imagenes/bg_boton.gif);
+	background-repeat:no-repeat;
+	margin-top:5px;
+	border:0px;
+	height:25px;
+	color:#FFF;
+	font-family:Verdana, Geneva, sans-serif;
+	padding-left:9px;
+	padding-right:9px;
+	width:69px
+}
+
+#containerSimula  {
+	margin-top:35px
+}
+.columnaSimula
+{
+	width: 45%;
+	float:left;
+	padding-left:10px
+}
+
+#containerSimula #mainContent {
+	/* recuerde que el relleno es el espacio situado dentro del cuadro div y que el margen es el espacio situado fuera del cuadro div */
+	width:72%;
+}
+
+#containerSimula #enlacesSuperior {
+	padding-right:0px;
+	width:104%
+}
+
+#containerSimula #logoExtremadura {
+    margin-left:-110px;
+    width:63%;
+	margin-top:35px;
+}
+.txtmensajeerror
+{
+	color: #C87C0B;
+}
+
+#logoUEimagen
+{
+    margin-top: 7px;
+}
+
+#logoRayuelaExtremadura, #logoRayuelaRayuela {
+    height: 75px;
+    position: absolute;
+    top: 30px;
+}
+
+#logoRayuelaExtremadura {
+    left: 30px;
+}
+
+#logoRayuelaRayuela {
+	right: 25px;
+}
+
+/***** ESTILOS PARA LA VENTANA DE AVISO *****/
+#avisoConBloqueoContenedor
+{
+	display:none;
+    font-family: arial;
+    font-size: 8pt;
+    left: 50%;
+    margin-left: -239px;
+    margin-top: -71px;
+    max-width: 500px;
+    position: absolute;
+    text-align: left;
+    top: 200px;
+    z-index: 200;
+}
+#avisoConBloqueoContenedor span.cerrar
+{
+    cursor: pointer;
+    position: absolute;
+    right: -6px;
+    top: -6px;
+}
+
+#avisoConBloqueo
+{
+    background-color: #FFFFFF;
+    border: 1px ridge #898989;
+    border-radius: 10px 10px 10px 10px;
+    display: inline-block;
+    padding: 10px 10px 5px;
+}
+
+#contenedorAvisos{
+	display:none;
+}
+/***** FIN ESTILOS PARA LA VENTANA DE AVISO *****/
+
+
+
+/***** ESTILOS PARA LA ZONA DE NOTICIAS *****/
+.cabecera_verde_noticias {
+	background-image: url(../imagenes/anillas_verde.jpg);
+	width: 257px;
+	height: 53px;
+	background-repeat: no-repeat
+}
+
+.cabecera_verde_noticias_sintexto {
+	background-image: url(../imagenes/anillas_verde_sin_texto.jpg);
+	width: 257px;
+	height: 38px;
+	background-repeat: no-repeat
+}
+
+.med_verde_noticias {
+	background-image: url(../imagenes/medio_verde.jpg);
+	background-repeat: repeat-y;
+	width: 230px;
+	padding-left: 11px;
+	padding-right: 9px;
+}
+
+.pie_verde_noticias {
+	background-image: url(../imagenes/pie_verde.jpg);
+	width: 257px;
+	height: 24px;
+	background-repeat: no-repeat
+}
+
+.cabecera_morado_noticias {
+	background-image: url(../imagenes/anillas_morada.jpg);
+	width: 257px;
+	height: 53px;
+	background-repeat: no-repeat
+}
+
+.cabecera_morado_noticias_sintexto {
+	background-image: url(../imagenes/anillas_morada_sin_texto.jpg);
+	width: 257px;
+	height: 36px;
+	background-repeat: no-repeat
+}
+
+.cabecera_morado_noticias_sintexto_grande {
+	background-image: url(../imagenes/anillas_morada_sin_texto_grande.jpg);
+	width: 494px;
+	height: 36px;
+	background-repeat: no-repeat
+}
+
+.med_morado_noticias {
+	background-image: url(../imagenes/medio_morada.jpg);
+	background-repeat: repeat-y;
+	width: 230px;
+	padding-left: 11px;
+	padding-right: 5px
+}
+
+.med_morado_noticias_grande {
+	background-image: url(../imagenes/medio_morada_grande.jpg);
+	background-repeat: repeat-y;
+	width: 460px;
+	padding-left: 11px;
+	padding-right: 5px
+}
+
+.pie_morado_noticias {
+	background-image: url(../imagenes/pie_morada.jpg);
+	width: 257px;
+	height: 24px;
+	background-repeat: no-repeat
+}
+.pie_morado_noticias_grande {
+	background-image: url(../imagenes/pie_morada_grande.jpg);
+	width: 494px;
+	height: 24px;
+	background-repeat: no-repeat
+}
+.texto_morado_noticias {
+	color: #64234B;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	margin-right:5px;
+	text-align:justify;
+}
+.resaltado_naranja
+{
+	color: #e36c0d;
+	font-size: 13px;
+}
+
+.texto_morado_noticias_grande
+{
+	color: #64234B;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	margin-right:5px;
+	text-align:justify;
+}
+
+.tit_morado_noticias {
+	color: #64234B;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold
+}
+
+.tit_morado_noticias_grande
+{
+    background-color: #ffc000;
+    color: #64234B;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 7px;
+    padding: 5px;
+    text-align: center;
+    width: 460px;
+}
+
+.texto_blanco
+{
+	color: #ffffff;
+}
+
+.texto_verde_noticias {
+	color: #779B2B;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	margin-right:5px;
+	text-align:justify;
+}
+
+.tit_verde_noticias {
+	color: #779B2B;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold
+}
+
+.anchuraTabla
+{
+	width: 257px;
+}
+/***** FIN ESTILOS PARA LA ZONA DE NOTICIAS *****/
+
+#teselacss {
+    height: 25px;
+    width: 70px;
+    padding-top: 6px;
+}
+
+a.tesela {
+    background-repeat: no-repeat;
+}
+
+a.youtube {
+    background-image: url("../imagenes/favicon_16_youtube.png");
+    background-repeat: no-repeat;
+	padding-left: 18px !important;
+}
+
+/*a.twitter {
+    background-image: url("../imagenes/twitter.png");
+    background-repeat: no-repeat;
+	padding-left: 18px !important;
+}*/
+
+#x{
+	width: 10px !important;
+}
+
+a.APPS {
+    background-image: url("../imagenes/APPS.png");
+    background-repeat: no-repeat;
+	padding-left: 18px !important;
+}
+/*a.APP_IONIC {
+    background-image: url("../imagenes/APP_IONIC.png");
+    background-repeat: no-repeat;
+	padding-left: 18px !important;
+}*/
+
+a{
+	font-family: arial;
+}
+
+#divClavePin {
+  /*background-image: url("../imagenes/banner_clave_pin.png");*/
+  background-image: url("../imagenes/clave_pin.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-radius: 15px;
+  height: 58px;
+  width: 90px;
+}
+
+#UltimaHoraContent{
+    position: fixed;
+    width: 18%;
+    border-radius: 4px 4px;
+    margin-left: 1em;
+    height: max(100%);
+    top:15%;
+    /*background:  #80668A;
+    background: linear-gradient(270deg, rgba(128,102,137,0.8) 0%, rgba(128,102,137,0.1) 100%);*/
+    
+    background: rgb(128,102,138);
+	background: -moz-linear-gradient(270deg, rgba(128,102,138,1) 0%, rgba(146,123,157,0.93) 0%, rgba(255,255,255,0.9) 100%);
+	background: -webkit-linear-gradient(270deg, rgba(128,102,138,1) 0%, rgba(146,123,157,0.93) 0%, rgba(255,255,255,0.9) 100%);
+	background: linear-gradient(270deg, rgba(128,102,138,1) 0%, rgba(146,123,157,0.93) 0%, rgba(255,255,255,0.9) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#80668a",endColorstr="#ffffff",GradientType=1);
+}
+#UltimaHoraContentInterior{
+	position: relative;
+	height: 80%;
+}
+
+#UltimaHoraHeader{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #80668A;
+    color: white;
+}
+
+#UHbotonCerrar, #UHbotonExtender{
+	float: inline-end;
+    cursor: pointer;
+}
+#UHbotonExtender img{
+    width:1.5em;
+}
+
+#UHbotonCerrar img{
+    width:1em;
+    padding: 0.25em;
+}
+
+/*
+#UltimaHoraBody::-webkit-scrollbar {
+    width: 10px;
+}
+#UltimaHoraBody::-webkit-scrollbar-thumb {
+	background: #80668A;
+    border-radius: 4px;
+    border: 3px solid #D7D0DA;
+}
+#UltimaHoraBody::-webkit-scrollbar-track {
+    background:#D7D0DA;
+    border-radius: 4px !important;
+}
+*/
+#UltimaHoraBody{
+	padding-top: 5px;
+    margin-top: 5px;
+    position: relative;
+  	overflow-y: auto;
+  	width: 99%;
+  	height: 95%;
+  	
+  
+  	scrollbar-width: thin;
+  	scrollbar-color: #80668A #D7D0DA;
+}
+.UHNoticia{
+	color: #777;
+	font-family: Verdana, Geneva, sans-serif;
+	background-color: white;
+	border: 2px solid #80668A;
+	margin: 1em;
+	font-size: 0.7em;
+	text-align: justify;
+	border-radius: 5px;
+}
+
+
+.UHNoticiaTitulo{
+	color: #80668A;
+	font-weight: bold;
+	margin: 1em;
+}
+.UHNoticiaHeader{
+	margin: 0em 1em;
+	margin-bottom: 0.5em;
+}
+
+#AvisoLegalContent{
+	visibility: hidden;
+	opacity:0;
+	z-index: 2147483648!important;
+    position: fixed;
+   	width: 60%;
+    border-radius: 4px 4px;
+    margin-left: 19em;
+    height: max(100%);
+    top: 0.5%;
+    background: rgb(128,102,138);
+	background: -moz-linear-gradient(270deg, rgba(128,102,138,1) 0%, rgba(146,123,157,0.93) 0%, rgba(255,255,255,0.9) 100%);
+	background: -webkit-linear-gradient(270deg, rgba(128,102,138,1) 0%, rgba(146,123,157,0.93) 0%, rgba(255,255,255,0.9) 100%);
+	background: linear-gradient(270deg, rgba(128,102,138,1) 0%, rgba(146,123,157,0.93) 0%, rgba(255,255,255,0.9) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#80668a",endColorstr="#ffffff",GradientType=1);
+}
+
+#AvisoLegalContentInterior{
+	position: relative;
+	height: 94.5%;
+}
+#AvisoLegalHeader{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px;
+    border-radius: 4px;
+    background-color: #80668A;
+    color: white;
+}
+#ALbotonExtender{
+	float: inline-end;
+    cursor: pointer;
+}
+#ALbotonExtender img{
+    width:1.2em;
+}
+#AvisoLegalBody{
+	color: #555;
+	padding-top: 5px;
+    margin-top: 5px;
+    position: relative;
+  	overflow-y: auto;
+  	width: 99%;
+  	height: 95%;
+  	
+  
+  	scrollbar-width: thin;
+  	scrollbar-color: #80668A #D7D0DA;
+}
+
+.avisoLegalTitulo{
+	padding: 5px 20px 2px 20px;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: justify;
+}
+.avisoLegalCuerpo{
+	padding: 0px 20px 0px 20px;
+    font-size: 10px;
+    text-align: justify;
+}
+
+.avisoLegalLista {
+	list-style: circle;
+    margin-left: 1.5em;
+ }
+
+#contenedorAvisoFormacion{
+	font-family: arial;
+    font-size: 11pt;
+    text-align: justify;
+    padding: 15px;
+    color: #80668A;
+}
+
+#contenedorAvisoFormacion a {
+	color: #80668A;
+    font-weight: bold;
+}
+
+#botonCerrarAviso{
+	width: fit-content;
+	margin: auto;
+	margin-top: 10px;
+	border-radius: 5px;
+	background: #9D88A7;
+	color: white;
+	padding: 5px;
+	cursor: pointer;
+}
+
+#botonCerrarAviso:hover {
+	background: #80668A;
+}
+.negrita{
+	font-weight:bold;
+}
+</style>
+
+
+
+
+
+
+
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Selección módulo</title>
+	<link href="/modulo_acceso/estilos/rayuela_portada.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<form action="controlador.rayuela" method="post" name="formulario">
+		<h1 class="ocultar">Página de gestión de errores</h1>
+		<div id="containerModulos">
+			<div id="mainContent">
+				<div id="logoRayuela">
+				</div>
+				<div id="enlacesSuperior">
+					<a href="#">&nbsp;</a>
+				</div>
+				<div style="height:98px;" id="modulos">
+					<div class="mensaje">Ha ocurrido el siguiente error:</div><br/>
+					<div class="mensaje mensajeError">
+						Ocurri&oacute; un error al procesar su solicitud
+					</div>
+					<div>
+						<button class="error" onclick="indicaAccion();return false;">
+							Aceptar
+						</button>
+					</div>
+				</div>
+				<div id="textoInferior">
+
+				</div>
+				<div id="logoExtremadura"><img width="123" height="43" alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRnYp5u3ETEym1h5oNHzUuk4LgDCbXXbZ3Qg&s"></div>
+				<div id="logoUE"><img width="118" height="43" src="rayuela.educarex.es/modulo_acceso/imagenes/logo_ue.gif"/></div>
+			</div>
+		</div><!-- end #container -->
+	</form>
+	<script>
+	function indicaAccion() {
+		window.top.location.replace("/");
+	}
+	</script>
+</body>
+</html>
